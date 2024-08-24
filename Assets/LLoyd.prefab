@@ -769,6 +769,7 @@ GameObject:
   - component: {fileID: 1468156343174115415}
   - component: {fileID: 3521843275382860694}
   - component: {fileID: 8470426976395858515}
+  - component: {fileID: 2548010928517057667}
   m_Layer: 0
   m_Name: LLoyd
   m_TagString: Untagged
@@ -882,6 +883,28 @@ MonoBehaviour:
   increaseRate: 1
   decreaseRate: 1
   fieldOfView: {fileID: 0}
+--- !u!114 &2548010928517057667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691734462233430899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33553d74c235ff4394aa53071759fb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  sitting: 0
+  currentWaypointIndex: 0
+  distanceToWaypoint: 0
+  animator: {fileID: 0}
+  intialPos: {x: 0, y: 0, z: 0}
+  distracted: 0
+  returning: 0
+  Phone: {fileID: 0}
+  itemTransform: {fileID: 0}
 --- !u!1 &1826435624880108601
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class DetectionMeter : MonoBehaviour
     private void Start()
     {
         fieldOfView= GetComponent<FieldOfView>();  
-        detectionSlider.value = 1;        // Set the initial value of the detection meter
+        //detectionSlider.value = 1;        // Set the initial value of the detection meter
     }
 
     private void Update()
@@ -35,20 +35,20 @@ public class DetectionMeter : MonoBehaviour
 
         else
         {
-            detectionSlider.value -= decreaseRate * Time.deltaTime;            // Increase the detection meter over time
+            //detectionSlider.value -= decreaseRate * Time.deltaTime;            // Increase the detection meter over time
         }
     }
 
     private void Detected()
     {
-        if (detectionSlider.value >= 100) 
-        {
-            //AudioManager.instance.PlayOneShot(FMODEvents.instance.Boss_LaughSound, this.transform.position);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            SceneManager.LoadScene("GameOver");
-
-        }
+        //if (detectionSlider.value >= 100) 
+        //{
+        //    //AudioManager.instance.PlayOneShot(FMODEvents.instance.Boss_LaughSound, this.transform.position);
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //    SceneManager.LoadScene("GameOver");
+        //
+        //}
     }
 
 }
