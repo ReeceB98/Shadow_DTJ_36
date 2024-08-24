@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 359a784c7b6da044ca7024b3c057fd83
+<<<<<<<< HEAD:Assets/Creep Horror Creature/CreepDemoScene.unity.meta
+guid: 76323b8ed0e794e49a28b15f3bac4317
+========
+guid: d3c01fa1253c51a4783a4ab7016f8039
+>>>>>>>> Liam:Assets/Scenes/03 Survival.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: a48530183bd46414f9ff1223d45ca1f7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Eordeoghlakat
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1272d4a33a618f440a0d93a2c802af9c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
