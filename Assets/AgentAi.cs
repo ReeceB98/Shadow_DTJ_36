@@ -10,6 +10,7 @@ public class AgentAi : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
     [SerializeField] protected int currentWaypointIndex = 0;
     [SerializeField] protected float distanceToWaypoint;
+    [SerializeField] protected float distanceToPlayer;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Vector3 intialPos;
 
@@ -17,11 +18,14 @@ public class AgentAi : MonoBehaviour
     public bool distracted = false;
     public bool returning = false;
 
+    public Transform playerTransform;
+
     // Start is called before the first frame update
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         intialPos = transform.position;
+        playerTransform = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame

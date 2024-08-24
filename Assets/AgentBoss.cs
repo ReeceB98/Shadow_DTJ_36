@@ -29,6 +29,8 @@ public class AgentBoss : AgentAi
         {
             WalkingtoOffice();
         }
+
+        Chasing();
         
 
     }
@@ -58,7 +60,24 @@ public class AgentBoss : AgentAi
 
         navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
 
-        animator.SetBool("IsWalking", true);
+        navMeshAgent.speed = 3.0f;
+        animator.SetFloat("Walking", navMeshAgent.speed);
+    }
+
+    private void Chasing()
+    {
+        distanceToPlayer = Vector3.Distance(playerTransform.position, transform.position);
+
+        if (distanceToPlayer <= 5.0f)
+        {
+            navMeshAgent.SetDestination(playerTransform.position);
+            navMeshAgent.speed = 6.0f;
+            animator.SetFloat("Walking", navMeshAgent.speed);
+        }
+        else
+        {
+            Walking();
+        }
     }
 
     public void WalkingtoOffice()
