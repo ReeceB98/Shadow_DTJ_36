@@ -57,11 +57,15 @@ public class AgentBoss : AgentAi
         {
             currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
         }
+      
 
         navMeshAgent.SetDestination(waypoints[currentWaypointIndex].position);
 
         navMeshAgent.speed = 3.0f;
         animator.SetFloat("Walking", navMeshAgent.speed);
+
+        Debug.Log("Waypoint Count: " + waypoints.Count);
+        Debug.Log("Current Waypoint Index: " + currentWaypointIndex);
     }
 
     private void Chasing()
