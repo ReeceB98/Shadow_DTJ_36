@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class FPScontroller : MonoBehaviour
@@ -20,6 +21,8 @@ public class FPScontroller : MonoBehaviour
     float rotationX = 0;
 
     public bool canMove = true;
+
+    public Transform spawnPosition;
 
 
     CharacterController characterController;
@@ -77,5 +80,13 @@ public class FPScontroller : MonoBehaviour
         }
 
         #endregion
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Creep3")
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
