@@ -7,9 +7,17 @@ public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Animator transition;
 
-    public void PlayGame()
+    private void Update()
     {
-        LoadNextScene();
+        if (Input.GetMouseButton(0))
+        {
+            LoadNextScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void LoadNextScene()
