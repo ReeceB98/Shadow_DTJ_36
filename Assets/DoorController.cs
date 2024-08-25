@@ -4,55 +4,76 @@ public class DoorController : MonoBehaviour
 {
     public float openAngle = 90f; // Angle to open the door
     public float smooth = 2f; // Speed of door movement
-    private bool isOpening = false; // State of door (opening/closing)
-    private bool isClosed = true; // State of door (closed/opened)
-    private Quaternion closedRotation; // Original rotation
-    private Quaternion openRotation; // Target rotation
+    public string requiredKeyID; // Key ID needed to unlock this door (if locked)
+    public bool isLocked = true; // Whether the door is locked or not
+    public float interactionDistance = 3f; // Distance within which the player can interact with the door
 
-    void Start()
+    private bool isOpening = false;
+    private bool isClosed = true;
+    private Quaternion closedRotation;
+    private Quaternion openRotation;
+    private Transform playerTransform;
+
+    private void Start()
     {
-        // Store the initial rotation of the door
         closedRotation = transform.rotation;
-        // Calculate the open rotation based on the initial rotation and open angle
         openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
+        playerTransform = Camera.main.transform; // Assuming the player camera is the main camera
     }
 
-    void Update()
+    private void Update()
     {
-        // Handle door movement
-        if (isOpening)
-        {
-            // Smoothly rotate towards the open rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * smooth);
-            if (Quaternion.Angle(transform.rotation, openRotation) < 0.1f)
-            {
-                transform.rotation = openRotation;
-                isOpening = false;
-                isClosed = false;
-            }
-        }
-        else if (!isOpening && !isClosed)
-        {
-            // Smoothly rotate towards the closed rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, closedRotation, Time.deltaTime * smooth);
-            if (Quaternion.Angle(transform.rotation, closedRotation) < 0.1f)
-            {
-                transform.rotation = closedRotation;
-                isClosed = true;
-            }
-        }
+        float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
 
-        // Check for player input to toggle the door state
-        if (Input.GetKeyDown(KeyCode.E)) // Replace with your input method
+        if (distanceToPlayer <= interactionDistance)
         {
-            ToggleDoor();
+            if (isOpening)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * smooth);
+                if (Quaternion.Angle(transform.rotation, openRotation) < 0.1f)
+                {
+                    transform.rotation = openRotation;
+                    isOpening = false;
+                    isClosed = false;
+                }
+            }
+            else if (!isOpening && !isClosed)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, closedRotation, Time.deltaTime * smooth);
+                if (Quaternion.Angle(transform.rotation, closedRotation) < 0.1f)
+                {
+                    transform.rotation = closedRotation;
+                    isClosed = true;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E)) // Replace with your input method
+            {
+                ToggleDoor();
+            }
         }
     }
 
     void ToggleDoor()
     {
-        // Toggle the door state
-        isOpening = !isOpening;
-        isClosed = !isClosed;
+        if (isLocked)
+        {
+            // Check if the player has the correct key if the door is locked
+            if (CollectibleItem.HasKey(requiredKeyID))
+            {
+                isOpening = !isOpening;
+                isClosed = !isClosed;
+            }
+            else
+            {
+                Debug.Log("You need the correct key to open this door.");
+            }
+        }
+        else
+        {
+            // If the door is not locked, just toggle the door state
+            isOpening = !isOpening;
+            isClosed = !isClosed;
+        }
     }
 }
