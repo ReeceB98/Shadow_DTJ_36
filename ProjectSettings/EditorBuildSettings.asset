@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03 Survival.unity
     guid: f67bc6ace60cac74fa88c93454a94271
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 02e48328be07f0049bebb9728fbd4197
   m_configObjects: {}
