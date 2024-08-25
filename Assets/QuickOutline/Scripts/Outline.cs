@@ -36,7 +36,7 @@ public class Outline : MonoBehaviour
 
     private bool needsUpdate;
     private Camera playerCamera;
-    private bool isOutlined = false;
+    public bool isOutlined = false;
 
     [SerializeField, Tooltip("Radius of the spherecast used for detecting the object.")]
     private float spherecastRadius = 1.0f;
