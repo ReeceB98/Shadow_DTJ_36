@@ -6,13 +6,14 @@ public class CollectibleItem : MonoBehaviour
 {
     public TextMeshProUGUI pickupMessage; // For TextMeshProUGUI
     public string keyID; // Unique identifier for the key
-
+    public bool isFuse; // Flag to check if the item is a fuse
     public bool isCollected = false;
     public float pickupDistance = 2.5f;
 
     private bool canPickUp = false;
     private Transform playerTransform;
     private static List<string> collectedKeys = new List<string>();
+    private static List<string> collectedFuses = new List<string>(); // Track collected fuses
 
     private void Start()
     {
@@ -63,6 +64,11 @@ public class CollectibleItem : MonoBehaviour
             collectedKeys.Add(keyID);
         }
 
+        if (isFuse && !collectedFuses.Contains(keyID))
+        {
+            collectedFuses.Add(keyID); // Add fuse to the collected list
+        }
+
         // Ensure pickup message is hidden when the item is collected
         if (pickupMessage != null)
         {
@@ -73,5 +79,10 @@ public class CollectibleItem : MonoBehaviour
     public static bool HasKey(string keyID)
     {
         return collectedKeys.Contains(keyID);
+    }
+
+    public static bool HasFuse(string fuseID)
+    {
+        return collectedFuses.Contains(fuseID);
     }
 }
